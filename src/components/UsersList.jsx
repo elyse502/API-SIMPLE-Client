@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 
-const ReadUsers = () => {
+const UsersList = () => {
     const getAllUsersUrl = 'http://localhost:4000/v1/user/all';
 
-    const [users, setUsers] = useState({});
+    const [users, setUsers] = useState({}); // important, default need to be empty object
 
     const fetchUsers = async () => {
         const res = await axios.get(`${getAllUsersUrl}`);
@@ -18,31 +18,29 @@ const ReadUsers = () => {
         fetchUsers();
     }, []);
 
-    const renderedUsers = Object.values(users).map(user => {
-        return (
-            <>
+    return (
+        <Container className='mt-5 mb-5'>
+            <h3 className='text-center mb-3'>
+                Users
+            </h3>
+            {Object.values(users).map(user => (
                 <Row className='justify-content-center'>
                     <Col lg={4}>
                         <Card>
                             <Card.Body>
                                 <h4>{user.name}</h4>
                                 <p>{user.email}</p>
+
+                                {user.city && user.country && (
+                                    <p>{user.city} - {user.country}</p>
+                                )}
                             </Card.Body>
                         </Card>
                     </Col>
                 </Row>
-            </>
-        );
-    });
-
-    return (
-        <>
-            <h3 className='text-center'>Users</h3>
-            <Row className="justify-content-md-center">
-                {renderedUsers}
-            </Row>
-        </>
+            ))}
+        </Container>
     );
 }
 
-export default ReadUsers;
+export default UsersList;
