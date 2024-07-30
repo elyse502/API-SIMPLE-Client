@@ -9,23 +9,13 @@ const BackgroundColor = createGlobalStyle`
   }
 `;
 
-// CamelCase
-const BlueText = styled.div`
-  color: blue;
-`;
-
-const WhiteText = styled.div`
-  color: #fff;
-`;
 
 export default() => {
   return (
     <>
       <BackgroundColor light />
         <Container fluid className='mt-4 mb-3'>
-          <BlueText>
-            <UsersList />
-          </BlueText>
+          <UsersList />
         </Container>
     </>
   );
