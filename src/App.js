@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 import UsersList from "./components/UsersList";
+import CreateUser from "./components/CreateUser";
 
 const BackgroundColor = createGlobalStyle`
   body {
