@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const CreateUser = () => {
-    const createUserEndpoint = 'http://localhost:4000/v1/user/create';
+    const createUserEndpoint = 'http://localhost:4000/v1/user';
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -23,19 +24,35 @@ const CreateUser = () => {
         try {
             const res = await axios.post(`${createUserEndpoint}`, payload);
 
-            if (res.data?.status === 'OK') {
-                // OK, give a success message
+            if (res.data?.status) {
+                toast.success('User successfully created')
 
                 // Clear states
-                setName('');
-                setEmail('');
-                setCity('');
-                setCountry('');
-            } else{
-                // Give an error message
+                setName("");
+                setEmail("");
+                setCity("");
+                setCountry("");
+            } else {
+                toast.warn('An error has occurred.');
             }
-        } catch (err) {
-            // We receive something wrong
+        } catch (error) {
+            const fixCaps = (message) => 
+                message[0].toUpperCase() + message.substring(1);
+
+            const getErrorMessage = () => {
+                const {
+                    data: { 
+                        errors: { body }, 
+                    },
+                } = error.response;
+                
+                const message = body[0]?.message;
+
+                // Uppercase the first letter of the message
+                return fixCaps(message);
+            }
+            
+            toast.error(getErrorMessage());
         }
     };
 
