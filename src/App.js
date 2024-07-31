@@ -1,12 +1,13 @@
+import CreateUser from "./components/CreateUser";
+import RetriveUser from "./components/RetrieveUser";
+import UsersList from "./components/UsersList";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { createGlobalStyle } from "styled-components";
 
-import UsersList from "./components/UsersList";
-import CreateUser from "./components/CreateUser";
 
 const BackgroundColor = createGlobalStyle`
   body {
@@ -24,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<UsersList />} />
             <Route path="/create" element={<CreateUser />} />
+            <Route path="/:userId" element={<RetriveUser />} />
           </Routes>
         </BrowserRouter>
       </Container>
