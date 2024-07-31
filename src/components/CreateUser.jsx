@@ -22,10 +22,12 @@ const CreateUser = () => {
         };
 
         try {
-            const res = await axios.post(`${createUserEndpoint}`, payload);
+            const { data: apiResponse } = await axios.post(`${createUserEndpoint}`, payload);
 
-            if (res.data?.status) {
-                toast.success('User successfully created')
+            if (apiResponse?.status) {
+                const getUserId = apiResponse.user?.id
+
+                toast.success(`User ${getUserId} successfully created`)
 
                 // Clear states
                 setName("");
