@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import axios from "axios";
+import Layout from "./Layout";
 
 const UsersList = () => {
     const getAllUsersEndpoint = 'http://localhost:4000/v1/user/all';
@@ -18,7 +19,7 @@ const UsersList = () => {
     }, []);
 
     return (
-        <Container className='mt-5 mb-5'>
+        <Layout>
             <h3 className='text-center mb-3'>
                 Users
             </h3>
@@ -38,7 +39,7 @@ const UsersList = () => {
                     </Col>
                 </Row>
             ))}
-        </Container>
+        </Layout>
     );
 }
 
