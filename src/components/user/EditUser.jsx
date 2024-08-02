@@ -2,7 +2,7 @@ import * as userService from "../../services/user.service";
 import Layout from "../layout/Layout";
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { firstUpperCase } from "../../helpers/string.helper";
 
@@ -109,7 +109,9 @@ const EditUser = () => {
                             />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" onClick={submitForm}>Update</Button>
+                        <Button variant="secondary" onClick={submitForm} className="m-1">Update</Button>
+                        
+                        <Button variant="danger" as={NavLink} to={`/remove/${userId}`} className="m-1">Remove</Button>
                     </Form>
                 </Col>
             </Row>
