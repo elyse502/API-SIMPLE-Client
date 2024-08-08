@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const RemoveUser = () => {
-    const DELAY_BEFORE_REDIRECTION_MS = 5000;  // 5 seconds
+    const DELAY_BEFORE_REDIRECTION_MS = 1000;  // 1 seconds
 
     const { userId } = useParams();
 
