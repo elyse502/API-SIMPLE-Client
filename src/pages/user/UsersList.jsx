@@ -3,7 +3,6 @@ import * as userService from "../../services/user.service";
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const UsersList = () => {
     const [users, setUsers] = useState({});  // Important, default need to be empty object
