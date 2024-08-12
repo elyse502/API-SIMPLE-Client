@@ -30,6 +30,8 @@ export const retrieveUser = async (userId) => {
 export const retrieveAllUsers = async () => {
     const getAllUsersEndpoint = `${baseApiUrl}/user/all`;
     const { data: apiResponse } = await axios.get(getAllUsersEndpoint);
+    // ask script to sleep for 2 seconds
+    // await new Promise(r => setTimeout(r, 2000));
 
     return apiResponse;
 };

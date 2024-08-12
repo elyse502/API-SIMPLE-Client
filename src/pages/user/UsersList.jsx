@@ -24,6 +24,8 @@ const UsersList = () => {
                 // Null Coalescing Operator
                 return apiErrorMessage ?? 'Error while connecting to the server.';
             };
+
+            setIsLoading(false);
             setErrorMessage(retrieveErrorMessage());
         }
     };
